@@ -47,17 +47,33 @@ button,input,select,textarea{font:inherit}
 a{text-decoration:none;color:inherit}
 @media(min-width:1025px){
   html{scroll-snap-type:y proximity;scroll-padding-top:var(--nav-h)}
-  main>section{scroll-snap-align:start;scroll-margin-top:var(--nav-h);min-height:var(--section-vh)}
-  .hero{display:flex;align-items:flex-start;min-height:var(--section-vh)}
+  main>section{
+    scroll-snap-align:start;
+    scroll-margin-top:var(--nav-h);
+    height:var(--section-vh);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    overflow:hidden;
+  }
+  .section .inner{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .hero{display:flex;align-items:center;}
   .hero-inner{
     width:100%;
-    min-height:var(--section-vh);
-    align-items:start;
-    padding-top:56px;
-    padding-bottom:36px;
+    height:100%;
+    align-items:center;
+    padding-top:32px;
+    padding-bottom:32px;
   }
   .hero-content{padding-top:0}
 }
+
+.reveal{opacity:0;transform:translateY(12px);transition:opacity .45s ease,transform .45s ease}
+.reveal.is-visible{opacity:1;transform:none}
 
 .visually-hidden{
   position:absolute!important;
@@ -72,14 +88,14 @@ a{text-decoration:none;color:inherit}
 }
 
 .page-shell{position:relative}
-.section{position:relative;padding:52px 0}
+.section{position:relative;padding:36px 0}
 .section-muted{background:var(--bg-lt)}
 .section-dark{
   background:linear-gradient(135deg, #1f0659 0%, #28116b 100%);
   color:var(--white);
 }
 .inner{width:min(1360px,100%);margin:0 auto;padding:0 40px}
-.stag{display:inline-flex;align-items:center;background:var(--primary-lt);color:var(--black);font-size:11.5px;font-weight:700;padding:5px 12px;border-radius:4px;margin-bottom:12px;border:1px solid rgba(255,172,47,.45);letter-spacing:.04em;text-transform:uppercase}
+.stag{display:inline-flex;align-items:center;background:var(--primary-lt);color:var(--black);font-size:11.5px;font-weight:700;padding:5px 12px;border-radius:4px;margin-bottom:6px;border:1px solid rgba(255,172,47,.45);letter-spacing:.04em;text-transform:uppercase}
 .stag::before{display:none}
 .section-dark .stag{background:rgba(255,172,47,.12);color:var(--white);border-color:rgba(255,172,47,.3)}
 .sec-head{
@@ -87,11 +103,11 @@ a{text-decoration:none;color:inherit}
   align-items:flex-start;
   justify-content:space-between;
   gap:24px;
-  margin-bottom:34px;
+  margin-bottom:30px;
 }
 .sec-head-copy{max-width:720px}
-.sec-h2{font-size:34px;font-weight:800;color:var(--black);margin:8px 0 10px;line-height:1.15;letter-spacing:0}
-.sec-p{font-size:15px;color:var(--text-md);line-height:1.65;margin-top:0}
+.sec-h2{font-size:26px;font-weight:800;color:var(--black);margin:6px 0 6px;line-height:1.15;letter-spacing:0}
+.sec-p{font-size:13.5px;color:var(--text-md);line-height:1.65;margin-top:4px}
 .section-dark .sec-h2{color:var(--white)}
 .section-dark .sec-p{color:rgba(255,255,255,.76)}
 
@@ -171,6 +187,16 @@ a{text-decoration:none;color:inherit}
 .nav-links a{font-size:14px;font-weight:600;color:var(--text);transition:color .18s ease}
 .nav-links a:hover{color:var(--secondary)}
 .nav-right{display:flex;align-items:center;gap:18px}
+.nav-nxtpe-corner{
+  display:flex;
+  align-items:center;
+  text-decoration:none;
+  opacity:.9;
+  transition:opacity .2s ease;
+  flex-shrink:0;
+}
+.nav-nxtpe-corner:hover{opacity:1}
+.nav-nxtpe-corner img{height:34px;width:auto;display:block}
 .nav-burger{
   display:none;
   width:44px;
@@ -189,22 +215,22 @@ a{text-decoration:none;color:inherit}
   margin:5px 0;
 }
 
-.hero{padding:0 0 52px;overflow:hidden;background:var(--white)}
+.hero{padding:0;overflow:hidden;background:var(--white)}
 .hero-inner{
   width:min(1360px,100%);
   margin:0 auto;
-  padding:32px 40px 48px;
+  padding:48px 40px;
   display:grid;
   grid-template-columns:minmax(0,1fr) minmax(520px,620px);
   gap:48px;
   align-items:center;
-  min-height:520px;
+  min-height:480px;
 }
 .hero-content{max-width:540px;padding-top:24px;position:relative;z-index:2}
 .hero-content h1{
-  font-size:48px;
+  font-size:44px;
   font-weight:800;
-  line-height:1.1;
+  line-height:1.08;
   letter-spacing:0;
   margin-top:0;
 }
@@ -212,11 +238,11 @@ a{text-decoration:none;color:inherit}
   font-size:16px;
   line-height:1.65;
   color:var(--text-md);
-  margin:16px 0 36px;
+  margin:16px 0 28px;
   max-width:560px;
 }
 .cta-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.trust-line{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:22px}
+.trust-line{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:12px}
 .trust-item{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--text-md);font-weight:600}
 .trust-item::before{
   content:'';
@@ -228,7 +254,7 @@ a{text-decoration:none;color:inherit}
 }
 .hero-visual{
   position:relative;
-  min-height:520px;
+  min-height:380px;
   border-radius:14px;
   padding:0;
   overflow:hidden;
@@ -239,8 +265,8 @@ a{text-decoration:none;color:inherit}
 .split-grid{
   display:grid;
   grid-template-columns:minmax(0,1fr) minmax(430px,520px);
-  gap:28px;
-  align-items:stretch;
+  gap:20px;
+  align-items:center;
 }
 .info-card,.surface-card,.feature-card,.doc-card,.faq-item,.timeline-card{
   border:1px solid var(--border);
@@ -248,14 +274,32 @@ a{text-decoration:none;color:inherit}
   background:var(--white);
   box-shadow:var(--shadow-sm);
 }
-.info-card{padding:30px}
+.info-card{
+  padding:32px 34px;
+  min-height:420px;
+}
+.eligibility-visual{
+  min-height:420px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:var(--shadow-sm);
+  background:var(--white);
+}
+.eligibility-visual img{
+  width:100%;
+  height:100%;
+  min-height:420px;
+  object-fit:cover;
+}
 .info-card h3{
-  font-size:28px;
+  font-size:24px;
   font-weight:800;
-  line-height:1.08;
-  letter-spacing:-.04em;
+  line-height:1.1;
+  letter-spacing:-.02em;
 }
 .info-card p{margin-top:14px;font-size:15px;line-height:1.7;color:var(--text)}
+.info-card .cta-row{margin-top:28px}
 .check-list{list-style:none;display:grid;gap:14px;margin-top:22px}
 .check-list li{
   display:flex;
@@ -276,7 +320,7 @@ a{text-decoration:none;color:inherit}
   margin-top:7px;
 }
 
-.surface-card{padding:28px}
+.surface-card{padding:18px 20px}
 .surface-card-label{
   font-size:11px;
   font-weight:800;
@@ -284,8 +328,8 @@ a{text-decoration:none;color:inherit}
   text-transform:uppercase;
   color:var(--text-soft);
 }
-.surface-card h3{font-size:34px;line-height:1.15;letter-spacing:0;margin-top:8px;color:var(--black)}
-.surface-card p{margin-top:10px;font-size:15px;line-height:1.65;color:var(--text-md)}
+.surface-card h3{font-size:24px;line-height:1.15;letter-spacing:0;margin-top:5px;color:var(--black)}
+.surface-card p{margin-top:8px;font-size:14px;line-height:1.6;color:var(--text-md)}
 
 .eligibility-form{margin-top:22px;display:grid;gap:16px}
 .field-row{display:flex;gap:12px;align-items:center}
@@ -342,14 +386,17 @@ a{text-decoration:none;color:inherit}
 
 .hiw-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
 .hiw-step{
-  padding:22px 20px 20px;
-  border-radius:14px;
+  padding:24px 22px 22px;
+  min-height:220px;
+  display:flex;
+  flex-direction:column;
+  border-radius:18px;
   background:var(--white);
-  border:1px solid var(--border);
-  box-shadow:var(--shadow-sm);
+  border:1px solid rgba(31,6,89,.08);
+  box-shadow:0 8px 24px rgba(17,17,17,.06), inset 0 1px 0 rgba(255,255,255,.9);
   transition:transform .22s ease,box-shadow .22s ease;
 }
-.hiw-step:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.hiw-step:hover{transform:translateY(-4px);box-shadow:0 14px 32px rgba(17,17,17,.1)}
 .hiw-step-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
 .hiw-step-num{
   width:42px;
@@ -375,14 +422,14 @@ a{text-decoration:none;color:inherit}
 }
 .hiw-step-icon svg{width:20px;height:20px}
 .hiw-step h3{font-size:18px;font-weight:800;line-height:1.2;margin-top:18px}
-.hiw-step p{font-size:14px;line-height:1.7;color:var(--text);margin-top:10px}
+.hiw-step p{font-size:14px;line-height:1.7;color:var(--text);margin-top:12px}
 
-.benefit-rows{display:grid;gap:16px;margin-top:26px}
+.benefit-rows{display:grid;gap:10px;margin-top:14px}
 .benefit-row{display:flex;align-items:flex-start;gap:16px}
 .benefit-row-icon{
-  width:44px;
-  height:44px;
-  border-radius:14px;
+  width:36px;
+  height:36px;
+  border-radius:10px;
   background:var(--primary-soft);
   color:var(--secondary);
   display:flex;
@@ -404,11 +451,11 @@ a{text-decoration:none;color:inherit}
   border:1px solid var(--border);
   box-shadow:var(--shadow-sm);
 }
-.promise-stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:22px}
-.promise-stat{padding:18px;border-radius:12px;background:var(--bg-lt);border:1px solid var(--border)}
+.promise-stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px}
+.promise-stat{padding:10px 12px;border-radius:12px;background:var(--bg-lt);border:1px solid var(--border)}
 .promise-stat strong{
   display:block;
-  font-size:30px;
+  font-size:24px;
   line-height:1;
   letter-spacing:-.06em;
   color:var(--secondary);
@@ -422,9 +469,9 @@ a{text-decoration:none;color:inherit}
   font-weight:700;
 }
 .promise-strip{
-  margin-top:24px;
-  padding:16px 18px;
-  border-radius:20px;
+  margin-top:12px;
+  padding:12px 14px;
+  border-radius:14px;
   background:var(--secondary);
   color:var(--white);
 }
@@ -439,16 +486,33 @@ a{text-decoration:none;color:inherit}
 
 .feature-grid,.doc-grid,.eligibility-grid,.timeline-grid{display:grid;gap:18px}
 .feature-grid{grid-template-columns:repeat(5,minmax(0,1fr))}
-.doc-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.doc-grid{grid-template-columns:repeat(5,minmax(0,1fr))}
 .eligibility-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 .timeline-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-.feature-card,.doc-card,.timeline-card{padding:22px;transition:transform .22s,box-shadow .22s,border-color .22s}
-.feature-card:hover,.doc-card:hover,.timeline-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--primary)}
+.feature-card,.doc-card,.timeline-card{
+  padding:24px 22px;
+  display:flex;
+  flex-direction:column;
+  border-radius:18px;
+  background:var(--white);
+  border:1px solid rgba(31,6,89,.08);
+  box-shadow:0 8px 24px rgba(17,17,17,.06), inset 0 1px 0 rgba(255,255,255,.9);
+  transition:transform .22s,box-shadow .22s,border-color .22s;
+}
+.feature-card{min-height:220px}
+.doc-card{min-height:230px}
+.timeline-card{min-height:180px}
+.feature-card:hover,.doc-card:hover,.timeline-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 14px 32px rgba(17,17,17,.1);
+  border-color:rgba(255,172,47,.42);
+}
 .feature-card-icon,.doc-card-icon,.timeline-card-icon{
-  width:46px;
-  height:46px;
-  border-radius:16px;
-  background:var(--primary-soft);
+  width:54px;
+  height:54px;
+  border-radius:18px;
+  background:linear-gradient(180deg, #fff4df 0%, #fff8ee 100%);
+  border:1px solid rgba(255,172,47,.22);
   color:var(--secondary);
   display:flex;
   align-items:center;
@@ -467,6 +531,31 @@ a{text-decoration:none;color:inherit}
   color:var(--text);
   margin-top:10px;
 }
+.journey-management-layout{
+  display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(360px,.85fr);
+  gap:28px;
+  align-items:stretch;
+}
+.journey-column{display:grid;gap:20px}
+.management-side{
+  min-height:100%;
+  padding:28px 30px;
+  border-radius:18px;
+  background:var(--white);
+  border:1px solid rgba(31,6,89,.08);
+  box-shadow:0 8px 24px rgba(17,17,17,.06);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.management-side .check-list{margin-top:18px}
+.management-side .sec-h2{margin-top:6px}
+.management-side p{
+  font-size:15px;
+  line-height:1.65;
+  color:var(--text-md);
+}
 
 .calc-layout{
   display:grid;
@@ -475,37 +564,73 @@ a{text-decoration:none;color:inherit}
   align-items:stretch;
 }
 .calc-card{border-radius:20px;border:none;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.04),0 4px 20px rgba(0,0,0,.07)}
-.calc-card.inputs{padding:28px}
+.calc-card.inputs{
+  padding:20px 22px;
+  display:grid;
+  gap:14px;
+}
 .calc-card.summary{
-  padding:28px;
+  padding:20px 22px;
   background:
     radial-gradient(circle at top right, rgba(255,172,47,.18), transparent 28%),
     linear-gradient(180deg, #fff 0%, #f8f4ff 100%);
 }
-.calc-step{padding:22px 0;border-bottom:1px solid var(--line)}
-.calc-step:first-child{padding-top:0}
-.calc-step:last-child{padding-bottom:0;border-bottom:none}
+.calc-step{
+  padding:18px;
+  border:none;
+  border-radius:18px;
+  background:var(--bg-md);
+  box-shadow:inset 0 0 0 1px rgba(31,6,89,.05);
+}
 .calc-step-head{
   display:flex;
   align-items:flex-start;
   justify-content:space-between;
   gap:18px;
 }
-.calc-step-head strong{font-size:19px;line-height:1.15;letter-spacing:-.03em}
-.calc-step-head span{font-size:13px;line-height:1.65;color:var(--text);display:block;margin-top:8px}
+.calc-step-head strong{font-size:16px;line-height:1.15;letter-spacing:-.03em}
+.calc-step-head span{font-size:12px;line-height:1.55;color:var(--text);display:block;margin-top:4px}
 .calc-value-pill{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  padding:12px 14px;
-  min-width:124px;
+  padding:8px 12px;
+  min-width:110px;
   border-radius:16px;
   background:var(--secondary-soft);
   color:var(--secondary);
-  font-size:14px;
+  font-size:13px;
   font-weight:800;
 }
-.range-wrap{margin-top:18px}
+.calc-amount-input-wrap{margin-top:14px;max-width:280px}
+.calc-amount-shell{position:relative;display:block}
+.calc-amount-shell span{
+  position:absolute;
+  left:16px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:14px;
+  font-weight:800;
+  color:var(--text-soft);
+}
+.calc-amount-shell input{
+  width:100%;
+  height:52px;
+  border:1.5px solid var(--border);
+  border-radius:16px;
+  padding:0 16px 0 56px;
+  background:var(--white);
+  color:var(--secondary);
+  font-size:18px;
+  font-weight:800;
+  outline:none;
+  transition:border-color .18s ease, box-shadow .18s ease;
+}
+.calc-amount-shell input:focus{
+  border-color:rgba(31,6,89,.38);
+  box-shadow:0 0 0 4px rgba(31,6,89,.08);
+}
+.range-wrap{margin-top:14px}
 .range-labels{
   display:flex;
   justify-content:space-between;
@@ -555,13 +680,74 @@ input[type="range"]::-moz-range-thumb{
   font-size:12px;
   font-weight:700;
 }
-.calc-summary-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
-.calc-summary-top h3{font-size:30px;line-height:1.02;letter-spacing:-.05em}
-.calc-summary-top p{margin-top:12px;color:var(--text);line-height:1.68;font-size:14px}
+.calc-fixed-period{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:8px 12px;
+  min-width:130px;
+  border-radius:16px;
+  background:var(--primary-lt);
+  color:var(--secondary);
+  font-size:13px;
+  font-weight:800;
+}
+.calc-pay-options{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:8px;
+  margin-top:12px;
+  padding:6px;
+  border-radius:18px;
+  background:rgba(31,6,89,.05);
+}
+.calc-pay-option{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:0;
+  padding:14px 16px;
+  border:1px solid transparent;
+  border-radius:14px;
+  background:transparent;
+  cursor:pointer;
+  text-align:center;
+  transition:border-color .18s ease,box-shadow .18s ease,background .18s ease;
+}
+.calc-pay-option:hover{
+  background:rgba(255,255,255,.6);
+}
+.calc-pay-option input{
+  position:absolute;
+  opacity:0;
+  pointer-events:none;
+}
+.calc-pay-option strong{
+  display:block;
+  font-size:16px;
+  font-weight:800;
+  line-height:1.2;
+  color:var(--secondary);
+}
+.calc-pay-option span{
+  display:block;
+  margin-top:4px;
+  font-size:12px;
+  line-height:1.55;
+  color:var(--text-md);
+}
+.calc-pay-option.active{
+  border-color:rgba(31,6,89,.14);
+  background:var(--white);
+  box-shadow:0 8px 18px rgba(31,6,89,.08);
+}
+.calc-summary-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.calc-summary-top h3{font-size:22px;line-height:1.1;letter-spacing:-.03em}
+.calc-summary-top p{margin-top:6px;color:var(--text);line-height:1.55;font-size:12.5px}
 .calc-emi{
-  margin-top:24px;
-  padding:24px;
-  border-radius:26px;
+  margin-top:14px;
+  padding:14px 18px;
+  border-radius:14px;
   background:var(--secondary);
   color:var(--white);
 }
@@ -574,32 +760,32 @@ input[type="range"]::-moz-range-thumb{
 }
 .calc-emi strong{
   display:block;
-  font-size:44px;
+  font-size:32px;
   line-height:.95;
   letter-spacing:-.06em;
-  margin-top:10px;
+  margin-top:6px;
 }
 .calc-emi span{
   display:block;
-  font-size:14px;
-  line-height:1.6;
+  font-size:12.5px;
+  line-height:1.5;
   color:rgba(255,255,255,.74);
-  margin-top:10px;
+  margin-top:4px;
 }
-.calc-lines{display:grid;gap:14px;margin-top:22px}
+.calc-lines{display:grid;gap:0;margin-top:12px}
 .calc-line{
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:16px;
-  padding:14px 0;
+  padding:8px 0;
   border-bottom:1px solid var(--line);
 }
 .calc-line:last-child{border-bottom:none}
-.calc-line span{font-size:13px;font-weight:700;color:var(--text-soft)}
-.calc-line strong{font-size:16px;font-weight:800;color:var(--secondary)}
-.calc-note{margin-top:18px;font-size:12px;line-height:1.65;color:var(--text-soft)}
-.calc-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.calc-line span{font-size:12.5px;font-weight:700;color:var(--text-soft)}
+.calc-line strong{font-size:14px;font-weight:800;color:var(--secondary)}
+.calc-note{margin-top:10px;font-size:11px;line-height:1.55;color:var(--text-soft)}
+.calc-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
 
 .eligibility-box{
   padding:26px 28px;
@@ -638,7 +824,7 @@ input[type="range"]::-moz-range-thumb{
 }
 .btn-wa:hover{background:#1db954;transform:translateY(-2px)}
 .hero-visual{
-  min-height:460px;
+  min-height:360px;
   padding:0;
   border:1px solid var(--border);
   background:url('https://furahafinancial.com/wp-content/uploads/2025/08/new-hero-img.webp') center center/cover no-repeat;
@@ -657,61 +843,10 @@ input[type="range"]::-moz-range-thumb{
   background:var(--white);
   border:1px solid var(--border);
 }
-.management-layout{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:28px;
-  align-items:stretch;
-}
-.management-copy p{
-  font-size:15px;
-  line-height:1.65;
-  color:var(--text-md);
-}
-.management-panel{
-  padding:28px;
-  border:1px solid var(--border);
-  background:var(--white);
-  box-shadow:var(--shadow-sm);
-}
-.management-label{color:var(--text-lt)}
-.status-list{display:grid;gap:12px;margin-top:18px}
-.status-item{
-  display:flex;
-  align-items:flex-start;
-  gap:12px;
-  padding:14px 0;
-  border-top:1px solid var(--border);
-}
-.status-item:first-child{
-  padding-top:0;
-  border-top:none;
-}
-.status-dot{
-  width:12px;
-  height:12px;
-  border-radius:50%;
-  background:var(--primary);
-  box-shadow:0 0 0 5px rgba(255,172,47,.16);
-  flex-shrink:0;
-  margin-top:6px;
-}
-.status-item strong{
-  display:block;
-  font-size:14px;
-  color:var(--black);
-}
-.status-item span{
-  display:block;
-  margin-top:4px;
-  font-size:13px;
-  line-height:1.6;
-  color:var(--text-md);
-}
 .faq-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:12px;
+  gap:8px;
   align-items:start;
 }
 .faq-item{
@@ -791,7 +926,7 @@ input[type="range"]::-moz-range-thumb{
   line-height:1.65;
   color:rgba(31,6,89,.82);
 }
-.wa-sec{background:var(--bg-lt);padding:72px 0}
+.wa-sec{background:var(--bg-lt);padding:56px 0}
 .wa-inner{
   max-width:1360px;
   margin:0 auto;
@@ -1178,7 +1313,8 @@ input[type="range"]::-moz-range-thumb{
   .hero-inner,
   .split-grid,
   .calc-layout,
-  .management-layout{grid-template-columns:1fr}
+  .management-layout,
+  .journey-management-layout{grid-template-columns:1fr}
   .hero-inner{gap:24px}
   .hero-visual{margin-right:0}
   .feature-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -1219,6 +1355,7 @@ input[type="range"]::-moz-range-thumb{
   }
   .nav-right{gap:8px}
   .btn-nav{display:none}
+  .nav-nxtpe-corner{display:none}
   .nav-burger{display:block}
   .logo-mark{width:148px}
   .hero{padding-bottom:44px}
@@ -1279,12 +1416,15 @@ input[type="range"]::-moz-range-thumb{
       <ul class="nav-links" id="navLinks">
         <li><a href="#eligibility-check">Eligibility</a></li>
         <li><a href="#how-it-works">How It Works</a></li>
-        <li><a href="#features">Loan Features</a></li>
+        <li><a href="#features">Loan Overview</a></li>
         <li><a href="#estimator">Estimator</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
       <div class="nav-right">
         <a href="#final-cta" class="btn-nav">Start Application</a>
+        <a href="https://www.nxt.pe" target="_blank" rel="noopener" class="nav-nxtpe-corner">
+          <img src="https://www.nxt.pe/assets/nxtpeLogo.png" alt="NxtPe" />
+        </a>
         <button class="nav-burger" id="navBurger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
           <span></span><span></span><span></span>
         </button>
@@ -1297,17 +1437,16 @@ input[type="range"]::-moz-range-thumb{
       <div class="hero-inner">
         <div class="hero-content reveal">
           <span class="stag">Fast, Secure, Fully Digital</span>
-          <h1>Get Cash When You Need It<br />In Minutes</h1>
-          <p>Apply for a Furaha loan through a fast, secure, fully digital process. No paperwork, no branch visits. Check your eligibility first, review your offer clearly, and continue when you are ready.</p>
+          <h1>Get School Fees Covered<br />Without the Stress</h1>
+          <p>Apply in minutes and get school fees paid directly to the school — fully digital, no branches.</p>
           <div class="cta-row">
-            <a href="#eligibility-check" class="btn-primary">Check Eligibility</a>
+            <a href="#estimator" class="btn-primary">Check Rate</a>
             <a href="#final-cta" class="btn-outline">Start Application</a>
-            <button type="button" class="btn-outline" data-open-support>Continue on WhatsApp</button>
           </div>
           <div class="trust-line" aria-label="Trust highlights">
-            <span class="trust-item">Instant decisions</span>
-            <span class="trust-item">Secure verification</span>
-            <span class="trust-item">Transparent terms</span>
+            <span class="trust-item">Direct school payment</span>
+            <span class="trust-item">Weekly or monthly repayment</span>
+            <span class="trust-item">No early repayment penalty</span>
           </div>
         </div>
 
@@ -1319,34 +1458,21 @@ input[type="range"]::-moz-range-thumb{
       <div class="inner">
         <div class="split-grid">
           <div class="info-card reveal">
-            <span class="stag">Instant Eligibility Entry</span>
-            <h3>Check Your Eligibility in Seconds</h3>
-            <p>Enter your mobile number to see how much you may be able to borrow before starting the full application. It is the fastest way to understand your likely range and continue with confidence.</p>
+            <span class="stag">Eligibility</span>
+            <h3>Check If You're Eligible</h3>
+            <p>Answer a few quick questions to see if you can apply. This takes less than a minute and does not affect your credit.</p>
             <ul class="check-list">
-              <li>Designed to reduce friction before the full form begins.</li>
-              <li>Gives borrowers a clearer starting point and expected range.</li>
-              <li>Helps drive better conversion with less cognitive load up front.</li>
+              <li>You are a Ugandan national aged 21 to 70.</li>
+              <li>You are paying school fees for a student.</li>
+              <li>You have an active mobile number and valid ID.</li>
+              <li>You are able to repay over a short-term plan.</li>
             </ul>
+            <div class="cta-row">
+              <button type="button" class="btn-primary" data-open-support>Check Eligibility</button>
+            </div>
           </div>
-          <div class="surface-card reveal">
-            <div class="surface-card-label">Eligibility Check</div>
-            <h3>Enter your mobile number to preview your borrowing limit.</h3>
-            <p>This initial step is quick, secure, and designed to help you decide whether to continue with the full application journey.</p>
-            <form class="eligibility-form" id="eligibilityForm">
-              <div class="field-row">
-                <label class="input-shell" for="mobileNumber">
-                  <span>+91</span>
-                  <input id="mobileNumber" name="mobileNumber" type="tel" inputmode="numeric" autocomplete="tel" placeholder="Mobile number" maxlength="10" />
-                </label>
-                <button type="submit" class="btn-primary">Check My Limit</button>
-              </div>
-              <p class="microcopy">No impact on your credit score for the eligibility check.</p>
-              <div class="eligibility-preview" id="eligibilityPreview" aria-live="polite">
-                <div class="surface-card-label">Illustrative Preview</div>
-                <strong id="eligibilityAmount">₹1,50,000</strong>
-                <small id="eligibilityMessage">You may be eligible for a Furaha offer up to this amount, subject to profile verification and credit assessment.</small>
-              </div>
-            </form>
+          <div class="eligibility-visual reveal">
+            <img src="https://furahafinancial.com/wp-content/uploads/2026/04/Multi-Child-Loans.webp" alt="Students and parents using Furaha for school fees" />
           </div>
         </div>
       </div>
@@ -1358,14 +1484,14 @@ input[type="range"]::-moz-range-thumb{
           <div class="sec-head-copy">
             <span class="stag">How It Works</span>
             <h2 class="sec-h2">A Simple, Guided Loan Journey</h2>
-            <p class="sec-p">The flow stays clear from the first eligibility check through to offer acceptance and disbursal. Each step is designed to remove ambiguity and keep momentum high.</p>
+            <p class="sec-p">Fully guided from application to school payment, completed in minutes.</p>
           </div>
         </div>
         <div class="hiw-steps">
-          <article class="hiw-step reveal"><div class="hiw-step-top"><span class="hiw-step-num">1</span><span class="hiw-step-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span></div><h3>Check Eligibility</h3><p>Enter basic details and get an instant estimate of how much you may be able to borrow.</p></article>
-          <article class="hiw-step reveal"><div class="hiw-step-top"><span class="hiw-step-num">2</span><span class="hiw-step-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18"/><path d="M5 8h14"/><path d="M5 16h14"/></svg></span></div><h3>Complete Your Profile</h3><p>Fill in personal, income, and KYC details through a guided form that keeps the process moving.</p></article>
-          <article class="hiw-step reveal"><div class="hiw-step-top"><span class="hiw-step-num">3</span><span class="hiw-step-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16"/><path d="M4 6h10"/><path d="M4 18h7"/></svg></span></div><h3>Get Your Offer</h3><p>Review your approved loan amount, tenure, and EMI before making a decision.</p></article>
-          <article class="hiw-step reveal"><div class="hiw-step-top"><span class="hiw-step-num">4</span><span class="hiw-step-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16"/><path d="m13 5 7 7-7 7"/></svg></span></div><h3>Accept and Receive Funds</h3><p>E-sign your agreement and get money transferred directly into your bank account.</p></article>
+          <article class="hiw-step reveal"><div class="hiw-step-top"><span class="hiw-step-num">1</span><span class="hiw-step-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span></div><h3>Start Your Application</h3><p>Enter your basic details and verify your mobile number.</p></article>
+          <article class="hiw-step reveal"><div class="hiw-step-top"><span class="hiw-step-num">2</span><span class="hiw-step-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18"/><path d="M5 8h14"/><path d="M5 16h14"/></svg></span></div><h3>Complete Verification</h3><p>Scan your ID, take a live selfie, and confirm your details securely.</p></article>
+          <article class="hiw-step reveal"><div class="hiw-step-top"><span class="hiw-step-num">3</span><span class="hiw-step-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16"/><path d="M4 6h10"/><path d="M4 18h7"/></svg></span></div><h3>Add School Details</h3><p>Enter student and school information or retrieve details using supported payment systems.</p></article>
+          <article class="hiw-step reveal"><div class="hiw-step-top"><span class="hiw-step-num">4</span><span class="hiw-step-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16"/><path d="m13 5 7 7-7 7"/></svg></span></div><h3>Get Approved and Pay Fees</h3><p>Accept your offer and we pay the school directly.</p></article>
         </div>
       </div>
     </section>
@@ -1375,30 +1501,30 @@ input[type="range"]::-moz-range-thumb{
         <div class="split-grid">
           <div class="surface-card reveal">
             <span class="stag">Why Furaha</span>
-            <h3>Designed for Speed and Simplicity</h3>
-            <p>Furaha keeps the experience focused on what borrowers actually need: fast visibility, low friction, clear terms, and a repayment path that feels manageable.</p>
+            <h3>Built Around Real School Fee Needs</h3>
+            <p>Furaha is designed to help families settle fees quickly with a simple digital journey and clear repayment terms.</p>
             <div class="benefit-rows">
-              <div class="benefit-row"><span class="benefit-row-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg></span><div><strong>Fast Approvals</strong><p>Get a decision in minutes based on your profile and verification flow.</p></div></div>
-              <div class="benefit-row"><span class="benefit-row-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="18" rx="3"/><path d="M9 7h6M9 11h6M9 15h4"/></svg></span><div><strong>Fully Digital Process</strong><p>From application to disbursal, every step happens online in a guided journey.</p></div></div>
-              <div class="benefit-row"><span class="benefit-row-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20"/><path d="M17 5H9a3 3 0 0 0 0 6h6a3 3 0 0 1 0 6H7"/></svg></span><div><strong>Transparent Terms</strong><p>See repayment structure, offer details, and fees with less ambiguity.</p></div></div>
-              <div class="benefit-row"><span class="benefit-row-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17h16"/><path d="M7 12h10"/><path d="M10 7h4"/></svg></span><div><strong>Flexible Repayment Options</strong><p>Choose a repayment plan that fits the way your monthly cash flow works.</p></div></div>
+              <div class="benefit-row"><span class="benefit-row-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="18" rx="3"/><path d="M9 7h6M9 11h6M9 15h4"/></svg></span><div><strong>Direct School Payment</strong><p>Funds are sent directly to the school, ensuring fees are settled without delay.</p></div></div>
+              <div class="benefit-row"><span class="benefit-row-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg></span><div><strong>Fast Digital Process</strong><p>From application to approval in a few simple steps.</p></div></div>
+              <div class="benefit-row"><span class="benefit-row-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20"/><path d="M17 5H9a3 3 0 0 0 0 6h6a3 3 0 0 1 0 6H7"/></svg></span><div><strong>Clear, Upfront Pricing</strong><p>See your repayment and total cost before accepting the loan.</p></div></div>
+              <div class="benefit-row"><span class="benefit-row-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17h16"/><path d="M7 12h10"/><path d="M10 7h4"/></svg></span><div><strong>Flexible Repayment</strong><p>Choose weekly or monthly payments over a fixed term.</p></div></div>
             </div>
           </div>
           <div class="promise-panel reveal">
             <div>
               <div class="surface-card-label">Furaha Promise</div>
-              <h3>Eligibility first. Offer clarity next. Momentum all the way through.</h3>
-              <p class="sec-p">Borrowers get a calmer, more confident start when the journey begins with an instant check, then progresses through verification, offer review, and direct disbursal without unnecessary detours.</p>
+              <h3>Built to help you act quickly when school fees are due.</h3>
+              <p class="sec-p">You can check your loan, review the total cost, choose a repayment plan, and complete the process in a guided digital flow.</p>
               <div class="promise-stat-grid">
-                <div class="promise-stat"><strong>01</strong><span>Eligibility-first flow for stronger fintech conversion.</span></div>
-                <div class="promise-stat"><strong>02</strong><span>Repeated CTAs placed around high-intent sections.</span></div>
-                <div class="promise-stat"><strong>03</strong><span>Dynamic estimator replaces static pricing tables.</span></div>
-                <div class="promise-stat"><strong>04</strong><span>Post-loan management details improve borrower trust.</span></div>
+                <div class="promise-stat"><strong>90</strong><span>Fixed repayment period in days.</span></div>
+                <div class="promise-stat"><strong>5%</strong><span>Monthly interest shown before acceptance.</span></div>
+                <div class="promise-stat"><strong>3%</strong><span>Processing fee added to the loan details.</span></div>
+                <div class="promise-stat"><strong>2.5%</strong><span>Late penalty on overdue amounts.</span></div>
               </div>
             </div>
             <div class="promise-strip">
-              <strong>Purpose-driven, guided finance</strong>
-              <span>Inspired by Furaha’s wider brand promise of matching people with the right financing, while keeping this page focused on conversion for a digital loan journey.</span>
+              <strong>Direct school payment with flexible repayment</strong>
+              <span>Choose weekly or monthly repayment over the fixed 90-day term, with no early repayment penalty.</span>
             </div>
           </div>
         </div>
@@ -1409,17 +1535,17 @@ input[type="range"]::-moz-range-thumb{
       <div class="inner">
         <div class="sec-head reveal">
           <div class="sec-head-copy">
-            <span class="stag">Loan Features</span>
-            <h2 class="sec-h2">What You Get with Furaha</h2>
-            <p class="sec-p">This section replaces static insurance coverage language with practical loan-focused benefits that matter during evaluation and decision-making.</p>
+            <span class="stag">Loan Overview</span>
+            <h2 class="sec-h2">Loan Details at a Glance</h2>
+            <p class="sec-p">Key terms shown upfront — amount range, fees, repayment period, and overdue policy.</p>
           </div>
         </div>
         <div class="feature-grid">
-          <article class="feature-card reveal"><span class="feature-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20"/><path d="M17 5H9a3 3 0 0 0 0 6h6a3 3 0 0 1 0 6H7"/></svg></span><h3>Flexible Loan Amounts</h3><p>Borrow based on your eligibility, profile strength, and borrowing needs.</p></article>
-          <article class="feature-card reveal"><span class="feature-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg></span><h3>Custom Repayment Tenure</h3><p>Select a repayment duration that feels workable for your monthly budget.</p></article>
-          <article class="feature-card reveal"><span class="feature-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16"/><path d="m13 5 7 7-7 7"/></svg></span><h3>Fast Disbursal</h3><p>Approved funds are transferred directly to your bank account after acceptance.</p></article>
-          <article class="feature-card reveal"><span class="feature-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span><h3>Secure Verification</h3><p>Your information is protected through encrypted systems and guided verification steps.</p></article>
-          <article class="feature-card reveal"><span class="feature-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 13 4 4L19 7"/></svg></span><h3>Credit Building Opportunity</h3><p>Timely repayment can help strengthen your credit profile over time.</p></article>
+          <article class="feature-card reveal"><span class="feature-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20"/><path d="M17 5H9a3 3 0 0 0 0 6h6a3 3 0 0 1 0 6H7"/></svg></span><h3>Loan Amount</h3><p>UGX 200,000 to UGX 3,500,000. Final approved amount depends on your application.</p></article>
+          <article class="feature-card reveal"><span class="feature-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg></span><h3>Repayment Period</h3><p>Fixed 90-day term, approximately 3 months.</p></article>
+          <article class="feature-card reveal"><span class="feature-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16"/><path d="m13 5 7 7-7 7"/></svg></span><h3>Interest and Fees</h3><p>5% monthly interest plus a 3% processing fee.</p></article>
+          <article class="feature-card reveal"><span class="feature-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span><h3>Repayment Options</h3><p>Choose weekly or monthly repayment plans.</p></article>
+          <article class="feature-card reveal"><span class="feature-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 13 4 4L19 7"/></svg></span><h3>Late Policy</h3><p>2.5% penalty applied to overdue amounts.</p></article>
         </div>
       </div>
     </section>
@@ -1429,40 +1555,47 @@ input[type="range"]::-moz-range-thumb{
         <div class="sec-head reveal">
           <div class="sec-head-copy">
             <span class="stag">Loan Estimator</span>
-            <h2 class="sec-h2">See Your Loan in Real Time</h2>
-            <p class="sec-p">Adjust loan amount and tenure to preview EMI and repayment details. This replaces static pricing tables with an interactive estimator built for faster decision-making.</p>
+            <h2 class="sec-h2">Estimate Your Loan</h2>
+            <p class="sec-p">Adjust the slider to preview your repayment.</p>
           </div>
         </div>
         <div class="calc-layout">
           <div class="calc-card inputs reveal">
             <div class="calc-step">
               <div class="calc-step-head">
-                <div><strong>Choose loan amount</strong><span>Move the range to see a sample offer size based on your intended borrowing requirement.</span></div>
-                <span class="calc-value-pill" id="amountLabel">₹1,20,000</span>
+                <div><strong>Loan amount</strong><span>Adjust to preview your loan offer.</span></div>
+                <span class="calc-value-pill" id="amountLabel">UGX 200,000</span>
+              </div>
+              <div class="calc-amount-input-wrap">
+                <label class="calc-amount-shell" for="amountInput">
+                  <span>UGX</span>
+                  <input id="amountInput" type="text" inputmode="numeric" value="200,000" aria-label="Loan amount in UGX" />
+                </label>
               </div>
               <div class="range-wrap">
-                <input id="amountRange" type="range" min="25000" max="300000" step="5000" value="120000" />
-                <div class="range-labels"><span>₹25,000</span><span>₹3,00,000</span></div>
+                <input id="amountRange" type="range" min="200000" max="3500000" step="10000" value="200000" />
+                <div class="range-labels"><span>UGX 200,000</span><span>UGX 3,500,000</span></div>
               </div>
             </div>
             <div class="calc-step">
               <div class="calc-step-head">
-                <div><strong>Select tenure</strong><span>Find a monthly EMI that feels manageable for your current cash flow.</span></div>
-                <span class="calc-value-pill" id="tenureLabel">12 months</span>
-              </div>
-              <div class="range-wrap">
-                <input id="tenureRange" type="range" min="3" max="24" step="1" value="12" />
-                <div class="range-labels"><span>3 months</span><span>24 months</span></div>
+                <div><strong>Payment period</strong></div>
+                <span class="calc-fixed-period">3 months fixed</span>
               </div>
             </div>
             <div class="calc-step">
               <div class="calc-step-head">
-                <div><strong>Preview your offer structure</strong><span>The example below uses a representative monthly rate so the page feels interactive while keeping the final decision subject to approval.</span></div>
+                <div><strong>Repayment plan</strong></div>
               </div>
-              <div class="calc-hint">
-                <span>Monthly EMI preview</span>
-                <span>Transparent repayment summary</span>
-                <span>Continue with this offer</span>
+              <div class="calc-pay-options" role="radiogroup" aria-label="Repayment frequency">
+                <label class="calc-pay-option active">
+                  <input type="radio" name="paymentFrequency" value="weekly" checked />
+                  <span><strong>Weekly</strong><span>12 weekly payments over the fixed term.</span></span>
+                </label>
+                <label class="calc-pay-option">
+                  <input type="radio" name="paymentFrequency" value="monthly" />
+                  <span><strong>Monthly</strong><span>3 monthly payments over the fixed term.</span></span>
+                </label>
               </div>
             </div>
           </div>
@@ -1470,59 +1603,22 @@ input[type="range"]::-moz-range-thumb{
             <div class="calc-summary-top">
               <div>
                 <div class="surface-card-label">Repayment Snapshot</div>
-                <h3>Illustrative EMI and repayment details</h3>
-                <p>Use this as an indicative preview before the full application. Final eligibility, rate, and approved amount depend on verification and credit assessment.</p>
+                <h3>Repayment preview</h3>
               </div>
             </div>
             <div class="calc-emi">
-              <div class="calc-emi-label">Estimated Monthly EMI</div>
-              <strong id="emiValue">₹11,002</strong>
-              <span id="emiMeta">For ₹1,20,000 over 12 months</span>
+              <div class="calc-emi-label" id="emiLabel">Weekly repayment</div>
+              <strong id="emiValue">UGX 19,667</strong>
+              <span id="emiMeta">For UGX 200,000 over 12 weekly payments</span>
             </div>
             <div class="calc-lines">
-              <div class="calc-line"><span>Loan amount</span><strong id="summaryAmount">₹1,20,000</strong></div>
-              <div class="calc-line"><span>Tenure</span><strong id="summaryTenure">12 months</strong></div>
-              <div class="calc-line"><span>Total repayable</span><strong id="summaryTotal">₹1,32,024</strong></div>
-              <div class="calc-line"><span>Total estimated interest</span><strong id="summaryInterest">₹12,024</strong></div>
-              <div class="calc-line"><span>Representative monthly rate</span><strong>1.5%</strong></div>
+              <div class="calc-line"><span>Loan amount</span><strong id="summaryAmount">UGX 200,000</strong></div>
+              <div class="calc-line"><span>Payment period</span><strong id="summaryTenure">3 months</strong></div>
+              <div class="calc-line"><span>Repayment plan</span><strong id="summaryFrequency">Weekly</strong></div>
+              <div class="calc-line"><span>Total repayment</span><strong id="summaryTotal">UGX 236,000</strong></div>
+              <div class="calc-line"><span>Total cost</span><strong id="summaryInterest">UGX 36,000</strong></div>
             </div>
-            <div class="calc-actions">
-              <a href="#final-cta" class="btn-primary">Continue with This Offer</a>
-              <button type="button" class="btn-outline" data-open-support>Talk Before I Apply</button>
-            </div>
-            <p class="calc-note">Illustrative example only. This estimator helps users understand possible EMIs in advance and is not a final loan commitment.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="eligibility">
-      <div class="inner">
-        <div class="sec-head reveal">
-          <div class="sec-head-copy">
-            <span class="stag">Eligibility</span>
-            <h2 class="sec-h2">Who Can Apply</h2>
-            <p class="sec-p">Keep the criteria clear and simple so borrowers can self-qualify quickly before entering the full application flow.</p>
-          </div>
-        </div>
-        <div class="eligibility-grid">
-          <div class="eligibility-box reveal">
-            <h3>Core requirements</h3>
-            <ul>
-              <li>Indian residents with valid government-issued ID.</li>
-              <li>Age between 21 and 60 years.</li>
-              <li>Salaried or self-employed individuals.</li>
-              <li>Active mobile number and bank account.</li>
-            </ul>
-          </div>
-          <div class="eligibility-box reveal">
-            <h3>Important note</h3>
-            <ul>
-              <li>Final eligibility depends on profile verification and credit assessment.</li>
-              <li>Offer amount, tenure, and repayment terms may vary by applicant profile.</li>
-              <li>Borrowers should complete KYC and income verification for a final decision.</li>
-            </ul>
-            <p class="eligibility-subtext">This section intentionally replaces “Who Can Apply” from the insurance templates with loan-specific requirements that are easier to scan and more aligned with fintech conversion.</p>
+            <p class="calc-note">Illustrative only. Final terms subject to verification and assessment.</p>
           </div>
         </div>
       </div>
@@ -1532,59 +1628,47 @@ input[type="range"]::-moz-range-thumb{
       <div class="inner">
         <div class="sec-head reveal">
           <div class="sec-head-copy">
-            <span class="stag">Documents Required</span>
-            <h2 class="sec-h2">What You’ll Need</h2>
-            <p class="sec-p">Having these details ready speeds up the flow and reduces drop-off during the profile and verification steps.</p>
+            <span class="stag">What You'll Need</span>
+            <h2 class="sec-h2">Prepare Before You Apply</h2>
+            <p class="sec-p">Having these ready will help you complete your application smoothly.</p>
           </div>
         </div>
         <div class="doc-grid">
-          <article class="doc-card reveal"><span class="doc-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 7h8"/><path d="M8 11h8"/><path d="M8 15h5"/><rect x="4" y="3" width="16" height="18" rx="3"/></svg></span><h3>Basic Details</h3><p>Mobile number and PAN to begin the application and connect the borrower profile.</p></article>
-          <article class="doc-card reveal"><span class="doc-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M8 11h8"/><path d="M7 15h4"/></svg></span><h3>Identity Verification</h3><p>Aadhaar or equivalent KYC document for identity and address verification.</p></article>
-          <article class="doc-card reveal"><span class="doc-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19h16"/><path d="M7 15V9"/><path d="M12 15V5"/><path d="M17 15v-3"/></svg></span><h3>Income Proof</h3><p>Salary slips or recent bank statements to support income assessment.</p></article>
-          <article class="doc-card reveal"><span class="doc-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="10" rx="2"/><path d="M3 10h18"/></svg></span><h3>Bank Account Details</h3><p>Bank information is required so approved funds can be disbursed directly to the borrower.</p></article>
+          <article class="doc-card reveal"><span class="doc-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 7h8"/><path d="M8 11h8"/><path d="M8 15h5"/><rect x="4" y="3" width="16" height="18" rx="3"/></svg></span><h3>Mobile Number and Verification</h3><p>Your mobile number will be used to start and verify your application.</p></article>
+          <article class="doc-card reveal"><span class="doc-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M8 11h8"/><path d="M7 15h4"/></svg></span><h3>National ID (NIN)</h3><p>You will need your NIN and a valid ID. You'll also be asked to scan your ID and take a live selfie.</p></article>
+          <article class="doc-card reveal"><span class="doc-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M2 12h3"/><path d="M19 12h3"/><path d="M12 2v3"/><path d="M12 19v3"/></svg></span><h3>Well-Lit Environment</h3><p>Make sure you are in a well-lit place so your ID scan and selfie can be captured clearly.</p></article>
+          <article class="doc-card reveal"><span class="doc-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19h16"/><path d="M7 15V9"/><path d="M12 15V5"/><path d="M17 15v-3"/></svg></span><h3>Student Registration Details</h3><p>Have the student's details ready through one of the supported systems: PegPay, SchoolPay, or SurePay.</p></article>
+          <article class="doc-card reveal"><span class="doc-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="10" rx="2"/><path d="M3 10h18"/></svg></span><h3>Mobile Wallet</h3><p>An active mobile wallet is required for repayment.</p></article>
         </div>
       </div>
     </section>
 
     <section class="section" id="next-steps">
       <div class="inner">
-        <div class="sec-head reveal">
-          <div class="sec-head-copy">
-            <span class="stag">What Happens Next</span>
-            <h2 class="sec-h2">From Application to Disbursal</h2>
-            <p class="sec-p">This is the conversion reassurance block: it explains what happens after the borrower begins the application and helps make the process feel more concrete.</p>
-          </div>
-        </div>
-        <div class="timeline-grid">
-          <article class="timeline-card reveal"><span class="timeline-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16"/><path d="M4 6h10"/><path d="M4 18h7"/></svg></span><h3>Application Review</h3><p>Your details are verified in real time or within minutes, depending on profile inputs and checks.</p></article>
-          <article class="timeline-card reveal"><span class="timeline-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20"/><path d="M17 5H9a3 3 0 0 0 0 6h6a3 3 0 0 1 0 6H7"/></svg></span><h3>Offer Generation</h3><p>You receive a personalized offer with approved amount, tenure, and EMI details.</p></article>
-          <article class="timeline-card reveal"><span class="timeline-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg></span><h3>Disbursal</h3><p>After acceptance and e-signing, funds are credited directly to your bank account.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-muted" id="management">
-      <div class="inner">
-        <div class="management-layout">
-          <div class="management-copy reveal">
-            <span class="stag">Loan Management</span>
-            <h2 class="sec-h2">Manage Your Loan with Ease</h2>
-            <p>Trust does not end at disbursal. Borrowers also want confidence that repayment, reminders, and support will stay simple after the loan is active.</p>
-            <ul class="check-list">
-              <li>Track your application and live loan status from the same journey.</li>
-              <li>Get reminders before due dates so repayment feels easier to manage.</li>
-              <li>Use multiple repayment options that align with borrower convenience.</li>
-              <li>Reach support quickly whenever you need help with the next step.</li>
-            </ul>
-          </div>
-          <div class="management-panel reveal">
-            <div class="surface-card-label management-label">Borrower Dashboard Preview</div>
-            <div class="status-list">
-              <div class="status-item"><span class="status-dot"></span><div><strong>Application under review</strong><span>Verification checks are running and your offer is being prepared.</span></div></div>
-              <div class="status-item"><span class="status-dot"></span><div><strong>Next EMI reminder</strong><span>Your upcoming due date appears early, with time to plan your repayment.</span></div></div>
-              <div class="status-item"><span class="status-dot"></span><div><strong>Repayment options available</strong><span>Flexible repayment paths help reduce confusion after disbursal.</span></div></div>
-              <div class="status-item"><span class="status-dot"></span><div><strong>Support always visible</strong><span>WhatsApp-style help stays one tap away for documents, eligibility, or loan info.</span></div></div>
+        <div class="journey-management-layout">
+          <div class="journey-column">
+            <div class="sec-head reveal">
+              <div class="sec-head-copy">
+                <span class="stag">What Happens Next</span>
+                <h2 class="sec-h2">From Application to Payment</h2>
+                <p class="sec-p">Furaha reviews your application, shares an offer, and pays the school once you accept.</p>
+              </div>
             </div>
+            <div class="timeline-grid">
+              <article class="timeline-card reveal"><span class="timeline-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16"/><path d="M4 6h10"/><path d="M4 18h7"/></svg></span><h3>Review</h3><p>Your application is assessed instantly or within minutes.</p></article>
+              <article class="timeline-card reveal"><span class="timeline-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20"/><path d="M17 5H9a3 3 0 0 0 0 6h6a3 3 0 0 1 0 6H7"/></svg></span><h3>Approval</h3><p>You receive a loan offer with clear terms.</p></article>
+              <article class="timeline-card reveal"><span class="timeline-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg></span><h3>Disbursement</h3><p>Funds are sent directly to the school once you accept the offer.</p></article>
+            </div>
+          </div>
+          <div class="management-side reveal" id="management">
+            <span class="stag">Repayment and Management</span>
+            <h2 class="sec-h2">Repay with Ease</h2>
+            <p>Once the school is paid, repayment stays simple and fully managed through your mobile wallet.</p>
+            <ul class="check-list">
+              <li>Pay weekly or monthly over the 90-day term.</li>
+              <li>No penalty for early repayment.</li>
+              <li>Mobile wallet payments keep repayment easy to track.</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -1594,16 +1678,16 @@ input[type="range"]::-moz-range-thumb{
       <div class="inner">
         <div class="sec-head reveal">
           <div class="sec-head-copy">
-            <span class="stag">Frequently Asked Questions</span>
-            <h2 class="sec-h2">Questions Borrowers Usually Ask Before They Apply</h2>
-            <p class="sec-p">This FAQ keeps the page practical and conversion-ready, with answers focused on approval timing, documentation, repayment, and transparency.</p>
+            <span class="stag">FAQ</span>
+            <h2 class="sec-h2">Frequently Asked Questions</h2>
+            <p class="sec-p">Quick answers on amount, fees, collateral, and repayment terms.</p>
           </div>
         </div>
         <div class="faq-grid">
-          <article class="faq-item reveal"><button class="faq-trigger" type="button" aria-expanded="false"><strong>How long does approval take?</strong><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-panel"><div class="faq-panel-inner">Many borrowers expect quick decisions, so this page frames approval as instant or within minutes depending on profile verification and assessment. Final timing can vary based on the details submitted.</div></div></article>
-          <article class="faq-item reveal"><button class="faq-trigger" type="button" aria-expanded="false"><strong>What documents are required?</strong><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-panel"><div class="faq-panel-inner">Borrowers should be ready with their mobile number, PAN, KYC document such as Aadhaar, income proof, and bank account details so the application can move faster.</div></div></article>
-          <article class="faq-item reveal"><button class="faq-trigger" type="button" aria-expanded="false"><strong>Can I repay early?</strong><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-panel"><div class="faq-panel-inner">Early repayment expectations should always follow the final terms shown in the approved offer. This page keeps the message clear by focusing on transparent repayment information before acceptance.</div></div></article>
-          <article class="faq-item reveal"><button class="faq-trigger" type="button" aria-expanded="false"><strong>Are there any hidden charges?</strong><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-panel"><div class="faq-panel-inner">The page is structured around clear offer details and transparent repayment summaries. Borrowers should see fees and repayment terms before accepting, which helps reinforce trust and reduce uncertainty.</div></div></article>
+          <article class="faq-item reveal"><button class="faq-trigger" type="button" aria-expanded="false"><strong>How much can I borrow?</strong><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-panel"><div class="faq-panel-inner">Furaha shows a loan range from UGX 200,000 to UGX 3,500,000. The final approved amount depends on your application and verification.</div></div></article>
+          <article class="faq-item reveal"><button class="faq-trigger" type="button" aria-expanded="false"><strong>What are the interest and fees?</strong><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-panel"><div class="faq-panel-inner">The loan is presented with 5% monthly interest and a 3% processing fee. Your repayment and total cost are shown before you accept the offer.</div></div></article>
+          <article class="faq-item reveal"><button class="faq-trigger" type="button" aria-expanded="false"><strong>Is any collateral required?</strong><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-panel"><div class="faq-panel-inner">The product details provided do not state any explicit physical collateral requirement. Instead, repayment enforcement is centered on wallet-based repayment and auto-debit behavior.</div></div></article>
+          <article class="faq-item reveal"><button class="faq-trigger" type="button" aria-expanded="false"><strong>What happens if I pay early or late?</strong><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-panel"><div class="faq-panel-inner">There is no penalty for early repayment. If the loan becomes overdue, a 2.5% late penalty applies to the overdue amount.</div></div></article>
         </div>
       </div>
     </section>
@@ -1613,13 +1697,13 @@ input[type="range"]::-moz-range-thumb{
         <div class="final-cta reveal">
           <div class="final-cta-grid">
             <div>
-              <span class="stag">Final CTA</span>
-              <h2>Apply for a Furaha Loan Today</h2>
-              <p>Start your application and get access to funds within minutes. Begin with a quick eligibility check, or continue with a guided application if you already know you want to move forward.</p>
+              <span class="stag">Apply Now</span>
+              <h2>Start Your Application Today</h2>
+              <p>Apply in minutes and get school fees covered without delays.</p>
             </div>
             <div class="cta-row">
-              <a href="#eligibility-check" class="btn-primary">Check Eligibility</a>
-              <button type="button" class="btn-outline" data-open-support>Start My Application</button>
+              <button type="button" class="btn-primary" data-open-support>Start My Application</button>
+              <a href="#estimator" class="btn-outline">Check Rate</a>
             </div>
           </div>
         </div>
@@ -1644,7 +1728,7 @@ input[type="range"]::-moz-range-thumb{
                 <div class="wa-chat-body">
                   <div class="wa-bubble">
                     <strong>Hello and welcome.</strong>
-                    <p>Need help checking eligibility, preparing documents, or understanding your loan offer? We are here to guide you.</p>
+                    <p>Need help with eligibility, documents, loan details, or your application process? We are here to guide you.</p>
                     <span class="wa-time">10:24 AM</span>
                   </div>
                   <div class="wa-bubble">
@@ -1652,8 +1736,8 @@ input[type="range"]::-moz-range-thumb{
                     <span class="wa-time">10:24 AM</span>
                   </div>
                   <div class="wa-mini-actions">
-                    <span class="wa-mini-chip">Eligibility Check</span>
-                    <span class="wa-mini-chip">Documents</span>
+                    <span class="wa-mini-chip">Eligibility Support</span>
+                    <span class="wa-mini-chip">Document Guidance</span>
                     <span class="wa-mini-chip">Loan Details</span>
                     <span class="wa-mini-chip">Application Help</span>
                   </div>
@@ -1663,17 +1747,17 @@ input[type="range"]::-moz-range-thumb{
           </div>
         </div>
         <div class="wa-cnt reveal">
-          <span class="stag">Support / WhatsApp</span>
-          <h2>Need Help Before You Apply?</h2>
-          <p>Chat with our team for quick answers on eligibility, documents, loan details, or application help. The support experience now follows the same landing-page system as the other pages, just adapted to Furaha’s loan journey.</p>
+          <span class="stag">Support</span>
+          <h2>Need Help?</h2>
+          <p>Get guidance on eligibility, required documents, or your application process.</p>
           <div class="wa-topics">
-            <span class="wa-tp">Eligibility check</span>
+            <span class="wa-tp">Eligibility support</span>
             <span class="wa-tp">Document guidance</span>
-            <span class="wa-tp">Loan information</span>
+            <span class="wa-tp">Loan details</span>
             <span class="wa-tp">Application help</span>
           </div>
-          <button type="button" class="btn-wa" data-open-support>Chat on WhatsApp</button>
-          <p class="wa-hrs">Quick answers during the application journey</p>
+          <button type="button" class="btn-wa" data-open-support>Chat with Support</button>
+          <p class="wa-hrs">Quick answers while you prepare and apply</p>
         </div>
       </div>
     </section>
@@ -1686,14 +1770,14 @@ input[type="range"]::-moz-range-thumb{
           <a href="#top" class="logo-wrap" aria-label="Furaha home">
             <img class="logo-mark small" src="https://furahafinancial.com/wp-content/uploads/2023/02/furaha-logo.svg" alt="Furaha" />
           </a>
-          <p>Furaha connects borrowers to a faster, simpler, more transparent digital loan journey. This landing page adapts the existing Jubilee landing-page system into a loan-first experience using Furaha’s brand colors, logo, and conversion flow.</p>
+          <p>Furaha supports a digital school-fees journey through app or USSD onboarding, consent-led assessment, direct-to-school disbursement, and wallet-based repayment over a fixed 90-day term.</p>
         </div>
         <div class="footer-col">
           <h4>Explore</h4>
           <ul>
             <li><a href="#eligibility-check">Check Eligibility</a></li>
             <li><a href="#how-it-works">How It Works</a></li>
-            <li><a href="#features">Loan Features</a></li>
+            <li><a href="#features">Loan Overview</a></li>
             <li><a href="#estimator">Estimator</a></li>
             <li><a href="#faq">FAQ</a></li>
           </ul>
@@ -1703,14 +1787,14 @@ input[type="range"]::-moz-range-thumb{
           <ul>
             <li><a href="#support">Support</a></li>
             <li><a href="#documents">Documents Required</a></li>
-            <li><a href="#management">Loan Management</a></li>
+            <li><a href="#management">Repayment</a></li>
             <li><a href="https://furahafinancial.com/" target="_blank" rel="noopener">Visit Furaha</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
         <span class="footer-copy">&copy; <span id="year"></span> Furaha. All rights reserved.</span>
-        <span class="footer-note">Illustrative estimator for landing-page UX. Final offers depend on profile verification and credit assessment.</span>
+        <span class="footer-note">Illustrative estimator for landing-page UX. Final offers depend on OTP, KYC, consent to data access, school validation where available, and credit assessment.</span>
       </div>
     </div>
   </footer>
@@ -1725,12 +1809,12 @@ input[type="range"]::-moz-range-thumb{
     <button type="button" class="wa-close" id="waClose" aria-label="Close support widget"><svg viewBox="0 0 48 48"><path d="M38 12.83 35.17 10 24 21.17 12.83 10 10 12.83 21.17 24 10 35.17 12.83 38 24 26.83 35.17 38 38 35.17 26.83 24z"/></svg></button>
   </div>
   <div class="wa-body">
-    <div class="wa-message">Hi. Tell us whether you need an eligibility check, document guidance, loan details, or help starting the application. This widget stays in-page for the prototype so the support journey can still be reviewed.</div>
+    <div class="wa-message">Hi. Tell us whether you need help with eligibility, documents, loan details, or your application process. This widget stays in-page for the prototype so the support journey can still be reviewed.</div>
     <div class="wa-quick">
-      <button type="button" class="wa-chip" data-message="I want to check my Furaha loan eligibility.">Check eligibility</button>
-      <button type="button" class="wa-chip" data-message="Please guide me on the documents required for a Furaha loan.">Document guidance</button>
-      <button type="button" class="wa-chip" data-message="I want to understand the Furaha loan amount, tenure, and EMI offer.">Loan information</button>
-      <button type="button" class="wa-chip" data-message="Please help me continue my Furaha loan application.">Application help</button>
+      <button type="button" class="wa-chip" data-message="I need help checking whether I am eligible for a Furaha school-fees loan.">Eligibility support</button>
+      <button type="button" class="wa-chip" data-message="Please guide me on the documents and verification steps I need before applying.">Document guidance</button>
+      <button type="button" class="wa-chip" data-message="I want to understand the Furaha loan amount, fees, and repayment details.">Loan details</button>
+      <button type="button" class="wa-chip" data-message="Please help me continue my Furaha school-fees loan application.">Application help</button>
     </div>
     <div class="wa-compose">
       <textarea id="waInput" rows="1" placeholder="Type your message..." aria-label="Type your message"></textarea>
@@ -1745,7 +1829,6 @@ input[type="range"]::-moz-range-thumb{
 (function(){
   var yearEl = document.getElementById('year');
   if(yearEl){ yearEl.textContent = new Date().getFullYear(); }
-  var currency = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 });
   var navLinks = document.getElementById('navLinks');
   var navBurger = document.getElementById('navBurger');
   if(navBurger && navLinks){
@@ -1769,43 +1852,107 @@ input[type="range"]::-moz-range-thumb{
     input.style.background = 'linear-gradient(90deg, var(--primary) 0%, var(--primary) ' + percent + '%, #ececf3 ' + percent + '%, #ececf3 100%)';
   }
   var amountRange = document.getElementById('amountRange');
-  var tenureRange = document.getElementById('tenureRange');
+  var amountInput = document.getElementById('amountInput');
   var amountLabel = document.getElementById('amountLabel');
-  var tenureLabel = document.getElementById('tenureLabel');
   var summaryAmount = document.getElementById('summaryAmount');
   var summaryTenure = document.getElementById('summaryTenure');
+  var summaryFrequency = document.getElementById('summaryFrequency');
   var summaryTotal = document.getElementById('summaryTotal');
   var summaryInterest = document.getElementById('summaryInterest');
+  var emiLabel = document.getElementById('emiLabel');
   var emiValue = document.getElementById('emiValue');
   var emiMeta = document.getElementById('emiMeta');
-  function calculateEmi(principal, months, monthlyRate){
-    var factor = Math.pow(1 + monthlyRate, months);
-    return principal * monthlyRate * factor / (factor - 1);
+  var paymentOptions = Array.prototype.slice.call(document.querySelectorAll('input[name=\"paymentFrequency\"]'));
+  var FIXED_MONTHS = 3;
+  var TOTAL_MULTIPLIER = 1.18;
+  function clampAmount(value){
+    if(!amountRange){ return value; }
+    var min = Number(amountRange.min);
+    var max = Number(amountRange.max);
+    return Math.max(min, Math.min(max, value));
+  }
+  function normalizeAmount(value){
+    if(!amountRange){ return value; }
+    var step = Number(amountRange.step) || 10000;
+    var min = Number(amountRange.min) || 0;
+    return Math.round((value - min) / step) * step + min;
+  }
+  function formatUGX(value){
+    return 'UGX ' + Math.round(value).toLocaleString('en-US');
+  }
+  function formatUGXInput(value){
+    return Math.round(value).toLocaleString('en-US');
+  }
+  function getPaymentFrequency(){
+    var selected = paymentOptions.find(function(option){ return option.checked; });
+    return selected ? selected.value : 'weekly';
+  }
+  function getAmountValue(){
+    return amountRange ? Number(amountRange.value) : 0;
+  }
+  function setAmountValue(value, source){
+    if(!amountRange){ return; }
+    var nextValue = clampAmount(normalizeAmount(value));
+    amountRange.value = String(nextValue);
+    if(amountInput && source !== 'input'){
+      amountInput.value = formatUGXInput(nextValue);
+    }
+  }
+  function syncPaymentOptionCards(){
+    paymentOptions.forEach(function(option){
+      var label = option.closest('.calc-pay-option');
+      if(label){ label.classList.toggle('active', option.checked); }
+    });
   }
   function updateEstimator(){
-    if(!amountRange || !tenureRange){ return; }
-    var amount = Number(amountRange.value);
-    var months = Number(tenureRange.value);
-    var monthlyRate = 0.015;
-    var emi = calculateEmi(amount, months, monthlyRate);
-    var total = emi * months;
+    if(!amountRange){ return; }
+    var amount = getAmountValue();
+    var total = Math.round(amount * TOTAL_MULTIPLIER);
     var interest = total - amount;
-    amountLabel.textContent = currency.format(amount);
-    tenureLabel.textContent = months + (months === 1 ? ' month' : ' months');
-    summaryAmount.textContent = currency.format(amount);
-    summaryTenure.textContent = months + (months === 1 ? ' month' : ' months');
-    summaryTotal.textContent = currency.format(Math.round(total));
-    summaryInterest.textContent = currency.format(Math.round(interest));
-    emiValue.textContent = currency.format(Math.round(emi));
-    emiMeta.textContent = 'For ' + currency.format(amount) + ' over ' + months + (months === 1 ? ' month' : ' months');
+    var frequency = getPaymentFrequency();
+    var installment = frequency === 'monthly' ? Math.round(total / FIXED_MONTHS) : Math.round(total / 12);
+    if(amountInput){ amountInput.value = formatUGXInput(amount); }
+    amountLabel.textContent = formatUGX(amount);
+    summaryAmount.textContent = formatUGX(amount);
+    summaryTenure.textContent = FIXED_MONTHS + ' months';
+    summaryFrequency.textContent = frequency === 'monthly' ? 'Monthly' : 'Weekly';
+    summaryTotal.textContent = formatUGX(total);
+    summaryInterest.textContent = formatUGX(interest);
+    emiLabel.textContent = frequency === 'monthly' ? 'Monthly repayment' : 'Weekly repayment';
+    emiValue.textContent = formatUGX(installment);
+    emiMeta.textContent = frequency === 'monthly'
+      ? ('For ' + formatUGX(amount) + ' over ' + FIXED_MONTHS + ' monthly payments')
+      : ('For ' + formatUGX(amount) + ' over 12 weekly payments');
     setRangeTrack(amountRange);
-    setRangeTrack(tenureRange);
+    syncPaymentOptionCards();
   }
-  if(amountRange && tenureRange){
-    amountRange.addEventListener('input', updateEstimator);
-    tenureRange.addEventListener('input', updateEstimator);
-    updateEstimator();
+  if(amountRange){
+    amountRange.addEventListener('input', function(){
+      setAmountValue(Number(amountRange.value), 'range');
+      updateEstimator();
+    });
   }
+  if(amountInput){
+    amountInput.addEventListener('input', function(){
+      var digits = (amountInput.value || '').replace(/\D/g, '');
+      if(!digits){
+        amountInput.value = '';
+        return;
+      }
+      var nextValue = clampAmount(Number(digits));
+      amountInput.value = formatUGXInput(nextValue);
+      setAmountValue(nextValue, 'input');
+      updateEstimator();
+    });
+    amountInput.addEventListener('blur', function(){
+      setAmountValue(getAmountValue());
+      updateEstimator();
+    });
+  }
+  paymentOptions.forEach(function(option){
+    option.addEventListener('change', updateEstimator);
+  });
+  updateEstimator();
   var eligibilityForm = document.getElementById('eligibilityForm');
   var mobileNumber = document.getElementById('mobileNumber');
   var eligibilityPreview = document.getElementById('eligibilityPreview');
@@ -1814,19 +1961,19 @@ input[type="range"]::-moz-range-thumb{
   if(eligibilityForm && mobileNumber){
     eligibilityForm.addEventListener('submit', function(event){
       event.preventDefault();
-      var digits = (mobileNumber.value || '').replace(/\\D/g, '').slice(0, 10);
-      if(digits.length !== 10){
+      var digits = (mobileNumber.value || '').replace(/\D/g, '').slice(0, 9);
+      if(digits.length !== 9){
         eligibilityPreview.classList.add('show');
         eligibilityAmount.textContent = 'Enter a valid mobile number';
-        eligibilityMessage.textContent = 'Please enter a 10-digit mobile number to preview an illustrative limit.';
+        eligibilityMessage.textContent = 'Please enter a 9-digit Uganda mobile number after +256 to preview an illustrative limit.';
         return;
       }
       var checksum = digits.split('').reduce(function(sum, digit){ return sum + Number(digit); }, 0);
-      var previewAmount = 75000 + (checksum % 10) * 25000;
-      if(previewAmount > 300000){ previewAmount = 300000; }
+      var previewAmount = 200000 + (checksum % 10) * 200000;
+      if(previewAmount > 2000000){ previewAmount = 2000000; }
       eligibilityPreview.classList.add('show');
-      eligibilityAmount.textContent = currency.format(previewAmount);
-      eligibilityMessage.textContent = 'Based on this quick check, you may be eligible for a Furaha offer up to this amount. Final eligibility depends on profile verification and credit assessment.';
+      eligibilityAmount.textContent = formatUGX(previewAmount);
+      eligibilityMessage.textContent = 'This is an illustrative preview only and does not affect your credit. Final approval follows verification, school details, and assessment.';
       if(amountRange){
         amountRange.value = String(Math.max(Number(amountRange.min), Math.min(previewAmount, Number(amountRange.max))));
         updateEstimator();
